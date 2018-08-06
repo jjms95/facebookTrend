@@ -1,14 +1,19 @@
+script(src='/javascripts/filter.country.js')
 div(id='page-header')
 	nav(class='navbar navbar-default navbar-fixed-top')
 		div(class='col-md-3 hidden-md-down')
-			img(class='logo', src='/images/logo.svg')
+			a(href='/youtube')
+				img(class='logo', src='/images/logo.svg')
 
 		div(class='col-md-6 hidden-md-down note')
-			ul(class='dropdown')
-				a(class="dropdown-toggle" data-toggle="dropdown" href="#")
-					Country
-				li(class='dropdown-menu')
+			div(class='dropdown')
+				a(class='dropdown-toggle btn btn-primary' data-toggle='dropdown' href='#')
+					strong
+						= 'Country'
+				ul(class='dropdown-menu scrollable-menu')
+					li
+						input(type='text' class='form-control' placeholder='Search..' id='myInput' onkeyup='filterFunction()')
 					each country in countries
-						li
+						li(class='country')
 							a(href='/youtube?code=' + country.code)
 								= country.name

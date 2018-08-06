@@ -7,13 +7,13 @@ const service = new YoutubeService();
 
 /* GET home page. */
 router.get('/', async (req, res) => {
-	const code = req.url.replace(/^.*\//g, '').replace(/^.*\..*/g, '');
-	console.log(code, "meeeeeeeee");
+	const code = req.query.code;
 	const trends = await service.getTrendingVideos(code);
 	res.render('youtube/index', {
 		title: config.title,
 		videos: trends,
 		countries: config.countryList,
+		code: code,
 	});
 });
 
